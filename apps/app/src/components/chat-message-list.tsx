@@ -1623,7 +1623,7 @@ export function ChatMessageList({
       }
 
       const shared = await shareWithNativeShell({
-        title: t(msg`${attachment.name} 的隐界名片`),
+        title: t(msg`${attachment.name}"'s Divinity profile card`),
         text: summary,
         url: profileUrl,
       });
@@ -6777,7 +6777,7 @@ function GiftMessage({
       </div>
       <div className="flex items-center justify-between bg-[rgba(0,0,0,0.10)] px-3 py-1.5">
         <span className="text-[10px] uppercase tracking-[0.12em] text-[rgba(255,255,255,0.85)]">
-          {translateRuntimeMessage(msg`隐界礼物`)}
+          {translateRuntimeMessage(msg`Divinity gift`)}
         </span>
       </div>
     </div>
@@ -6845,7 +6845,7 @@ function RedPacketMessage({
       </div>
       <div className="flex items-center justify-between bg-[rgba(0,0,0,0.10)] px-3 py-1.5">
         <span className="text-[10px] uppercase tracking-[0.12em] text-[rgba(255,255,255,0.85)]">
-          {translateRuntimeMessage(msg`隐界红包`)}
+          {translateRuntimeMessage(msg`Divinity red packet`)}
         </span>
       </div>
     </div>
@@ -8716,9 +8716,9 @@ function buildContactAttachmentSummary(
   profileUrl: string,
 ) {
   return [
-    `${attachment.name}${translateRuntimeMessage(msg` 的隐界名片`)}`,
+    `${attachment.name}${translateRuntimeMessage(msg`'s Divinity profile card`)}`,
     attachment.relationship?.trim() || translateRuntimeMessage(msg`世界联系人`),
-    `${translateRuntimeMessage(msg`隐界号：`)}${buildYinjieId(attachment.characterId)}`,
+    `${translateRuntimeMessage(msg`Divinity ID: `)}${buildYinjieId(attachment.characterId)}`,
     profileUrl,
   ].join("\n");
 }

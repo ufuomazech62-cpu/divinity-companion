@@ -6490,7 +6490,7 @@ function resolveNativeCameraCaptureNotice(
   if (normalizedMessage.includes("permission")) {
     return {
       message: options?.nativeBridgeAvailable
-        ? translateRuntimeMessage(msg`相机权限未开启，请到系统设置里允许隐界访问相机后再试。`)
+        ? translateRuntimeMessage(msg`Camera permission is off. Go to system settings and allow Divinity Companion to access the camera, then try again.`)
         : translateRuntimeMessage(msg`相机权限未开启，请检查当前设备的相机权限后再试。`),
       actionLabel:
         options?.nativeBridgeAvailable && options.onOpenSettings

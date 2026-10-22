@@ -10,7 +10,7 @@ const t = translateRuntimeMessage;
 
 type Props = {
   post: FeedPost | null;
-  /** 当前世界主人显示名 — 水印里"X 分享自隐界广场"用 */
+  /** current world-owner display name — used by the watermark "X shared from the Divinity plaza" */
   ownerDisplayName: string;
   onClose: () => void;
 };
@@ -32,7 +32,7 @@ export function FeedPostShareCardModal({
     <ShareCardModal
       cardKey={post?.id ?? null}
       modalTitle={t(msg`分享这条动态`)}
-      watermarkSubtitle={t(msg`${ownerDisplayName} 分享自隐界广场`)}
+      watermarkSubtitle={t(msg`${ownerDisplayName} shared from the Divinity plaza`)}
       bottomHint={t(
         msg`保存图片到相册，发到 X / 小红书 / 微博 引发更多人来看`,
       )}

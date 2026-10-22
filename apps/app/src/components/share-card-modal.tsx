@@ -450,7 +450,7 @@ export function ShareCardModal({
                   marginBottom: 2,
                 }}
               >
-                {t(msg`隐界 Enclave`)}
+                {t(msg`Divinity Companion`)}
               </div>
               <div style={{ fontSize: 13, color: "#4C4C4C" }}>
                 {watermarkSubtitle}

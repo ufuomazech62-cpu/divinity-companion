@@ -40,7 +40,7 @@ export function BootstrapScreen({ message }: BootstrapScreenProps) {
           Beyond Reality
         </div>
         <div className="mx-auto mt-6 flex h-20 w-20 animate-pulse items-center justify-center rounded-[var(--radius-xl)] bg-[linear-gradient(135deg,var(--brand-primary),var(--brand-secondary))] text-2xl font-semibold text-[color:var(--text-on-brand)] shadow-none">
-          {t(msg`隐界`)}
+          {t(msg`Divinity Companion`)}
         </div>
         <h1 className="mt-6 text-4xl font-semibold tracking-[0.08em] text-[color:var(--text-primary)]">
           {t(msg`欢迎回到你的世界`)}
