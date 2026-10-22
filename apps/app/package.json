@@ -22,6 +22,7 @@
     "audit:mobile-web:screenshots": "node ./scripts/screenshot-mobile-routes.mjs",
     "audit:mobile-web": "pnpm typecheck && pnpm lint:mobile-web && pnpm audit:mobile-web:routes && pnpm build",
     "test:desktop-unit": "vitest run --environment jsdom tests/desktop-route-state.test.ts",
+    "test:brand": "vitest run --environment jsdom tests/brand-english.test.ts",
     "test:desktop-browser": "pnpm --dir ../../api build && playwright test --config playwright.config.ts",
     "test:desktop": "pnpm test:desktop-unit && pnpm test:desktop-browser"
   },
