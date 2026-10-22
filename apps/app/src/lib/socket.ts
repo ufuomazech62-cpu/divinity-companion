@@ -208,6 +208,29 @@ export function onConversationUpdated(handler: (payload: ConversationUpdatedPayl
   return () => active.off(CHAT_EVENTS.conversationUpdated, handler);
 }
 
+// Server emits `delegation_update` from the chat gateway (see api chat module).
+// As-used shape; P1: tighten against the payload the gateway actually sends.
+export type DelegationUpdatePayload = {
+  conversationId?: string;
+  characterId?: string;
+  status?: string;
+  [key: string]: unknown;
+};
+
+export function onDelegationUpdate(handler: (payload: DelegationUpdatePayload) => void) {
+  const active = getChatSocket();
+  active.on(CHAT_EVENTS.delegationUpdate, handler);
+  return () => active.off(CHAT_EVENTS.delegationUpdate, handler);
+}
+
+export function emitOpenRedPacket(payload: {
+  conversationId: string;
+  messageId: string;
+  hongbaoId?: string;
+}) {
+  getChatSocket().emit(CHAT_EVENTS.openRedPacket, payload);
+}
+
 // socket.io-client 重连时 server 不知道该 socket 之前 join 了哪些 room
 // （server 端 Socket 实例每次都是新的）；调用方需要在 connect 事件里重新
 // emit join_conversation 才能继续收到 newMessage / typing / conversation_updated。

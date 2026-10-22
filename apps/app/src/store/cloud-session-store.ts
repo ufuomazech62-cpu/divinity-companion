@@ -133,3 +133,8 @@ export async function refreshCloudSessionIfNeeded(
   })();
   return inflightRefresh;
 }
+
+export function useHasCloudSession(): boolean {
+  const snapshot = useCloudSessionStore();
+  return Boolean(snapshot.accessToken);
+}
