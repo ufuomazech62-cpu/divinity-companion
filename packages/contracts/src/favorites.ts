@@ -61,3 +61,13 @@ export interface UpsertFavoriteNoteRequest {
   // 用户显式输入的标题；trim 后为空则后端走"正文首行派生"。
   title?: string;
 }
+
+// ── upstream-unshipped note AI tools (client.ts references stubs; P1:
+// wire real endpoints or delete the wrappers). Shapes are intentionally
+// opaque: no backend exists yet, only client.ts call-site usage.
+export type NoteAiToolRequest = { [key: string]: unknown };
+export type NoteAiToolResponse = { [key: string]: unknown };
+export type NoteAskRequest = { [key: string]: unknown };
+export type NoteAskResponse = { [key: string]: unknown };
+export type NoteFromMessageRequest = { [key: string]: unknown };
+export type NoteFromVoiceResponse = { [key: string]: unknown };

@@ -19,6 +19,8 @@ export const CHAT_EVENTS = {
   typingStart: "typing_start",
   typingStop: "typing_stop",
   conversationUpdated: "conversation_updated",
+  openRedPacket: "open_red_packet",
+  delegationUpdate: "delegation_update",
   error: "error",
 } as const;
 

@@ -187,3 +187,30 @@ export interface CommunityGameArtifactContent {
   html: string;
   htmlSha256: string;
 }
+
+/** Game-center play bridge: play characters visible to the world owner. */
+export interface GamePlayCharacter {
+  id: string;
+  name: string;
+  avatar?: string;
+  personaHint?: string;
+}
+
+/** Game-center play bridge: request one character's turn response. */
+export interface GameAiTurnRequest {
+  prompt: string;
+  characterId?: string;
+  context?: string;
+  history?: { role: "user" | "assistant"; content: string }[];
+  maxTokens?: number;
+}
+
+/** Game-center play bridge: one character's turn response. */
+export interface GameAiTurnResult {
+  text: string;
+  characterId: string;
+  characterName: string;
+}
+
+// upstream-unshipped community game board (/cloud/games/board not built).
+export type CommunityGameBoardResponse = { [key: string]: unknown };

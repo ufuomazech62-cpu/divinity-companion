@@ -198,3 +198,9 @@ export interface FeedViewRequest {
 export interface FeedShareRequest {
   channel?: "native" | "copy" | "system" | "unknown";
 }
+
+// upstream-unshipped channel watch history endpoint (/feed/channels/history
+// not built); posts shape is what client.ts normalizers consume.
+export interface FeedChannelWatchHistoryResponse {
+  posts: FeedPost[];
+}

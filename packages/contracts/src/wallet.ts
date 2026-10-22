@@ -197,3 +197,7 @@ export interface HongbaoSweepResponse {
   refundedOutgoing: number;
   expiredIncoming: number;
 }
+
+// upstream-unshipped wallet billable catalog (client.ts references a stub;
+// P1: wire /cloud/me/wallet/billable-catalog or remove). Opaque on purpose.
+export type CloudBillableCatalogResponse = { [key: string]: unknown };
