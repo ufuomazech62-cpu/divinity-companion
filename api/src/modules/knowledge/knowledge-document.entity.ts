@@ -7,10 +7,10 @@ export class KnowledgeDocumentEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'text', nullable: true })
   ownerId?: string | null;
 
-  @Column({ nullable: true })
+  @Column({ type: 'text', nullable: true })
   characterId?: string | null;
 
   @Column()

@@ -5,6 +5,8 @@ import { CharactersController } from './characters.controller';
 import { CharacterEntity } from './character.entity';
 import { CharacterBlueprintEntity } from './character-blueprint.entity';
 import { CharacterBlueprintRevisionEntity } from './character-blueprint-revision.entity';
+import { CharacterUnlockEntity } from './character-unlock.entity';
+import { CharacterUnlockService } from './character-unlock.service';
 import { CharacterBlueprintService } from './character-blueprint.service';
 import { CharacterImportRegisterClient } from './character-import-register.client';
 import { AiModule } from '../ai/ai.module';
@@ -25,6 +27,7 @@ import { PrivateCharacterRateLimitGuard } from './guards/private-character-rate-
       CharacterEntity,
       CharacterBlueprintEntity,
       CharacterBlueprintRevisionEntity,
+      CharacterUnlockEntity,
       FriendshipEntity,
     ]),
   ],
@@ -32,6 +35,7 @@ import { PrivateCharacterRateLimitGuard } from './guards/private-character-rate-
     CharactersService,
     CharacterBlueprintService,
     CharacterImportRegisterClient,
+    CharacterUnlockService,
     AdminGuard,
     PrivateCharacterRateLimitGuard,
   ],

@@ -8,7 +8,7 @@ export class CharacterUnlockEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'text', nullable: true })
   ownerId?: string | null;
 
   @Column()

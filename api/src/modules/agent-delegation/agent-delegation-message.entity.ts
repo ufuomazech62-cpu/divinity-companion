@@ -10,7 +10,7 @@ export class AgentDelegationMessageEntity {
   @Column()
   delegationId: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'text', nullable: true })
   ownerId: string | null;
 
   @Column()

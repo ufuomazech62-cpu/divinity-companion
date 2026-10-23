@@ -10,10 +10,10 @@ export class KnowledgeChunkEntity {
   @Column()
   documentId: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'text', nullable: true })
   ownerId?: string | null;
 
-  @Column({ nullable: true })
+  @Column({ type: 'text', nullable: true })
   characterId?: string | null;
 
   @Column('int', { default: 0 })
