@@ -28,6 +28,16 @@ export class CharacterEntity {
   @Column({ default: false })
   isOnline: boolean;
 
+  // Paid unlock fields (upstream characters controller contract).
+  @Column({ default: false })
+  isPaid?: boolean;
+
+  @Column({ type: 'integer', nullable: true })
+  unlockPriceCents?: number | null;
+
+  @Column({ type: 'text', nullable: true })
+  unlockCurrency?: string | null;
+
   @Column({ default: 'auto' })
   onlineMode: string;
 

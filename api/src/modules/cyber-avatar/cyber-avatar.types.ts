@@ -212,6 +212,31 @@ export type CyberAvatarInteractionRules = {
   promptTemplates: CyberAvatarInteractionPromptTemplates;
 };
 
+// Context-hub prompt/config blocks (Stratum A/B/C/D) — upstream contract surfaced
+// from the default constants in cyber-avatar.constants.ts.
+export interface CyberAvatarContextHubTemplates {
+  ownerPortraitGuidance: string;
+  ownerPortraitLowConfidenceHint: string;
+  worldFocusGuidance: string;
+  worldRecentEpisodesGuidance: string;
+  relevantMemoryGuidance: string;
+  openQuestionsBlockGuidance: string;
+  openQuestionExtractionPrompt: string;
+}
+
+// "Analysis of self" prompt + fallback copy config consumed by
+// cyber-avatar-self.service.ts (placeholders: {{profile}}, {{knowledge}},
+// {{coreInstruction}}, {{lowConfidenceNote}}).
+export interface CyberAvatarSelfFacingPromptConfig {
+  analysisPrompt: string;
+  chatSystemPrompt: string;
+  chatLowConfidenceNote: string;
+  analysisEmptyHeadline: string;
+  analysisEmptyCaveat: string;
+  analysisDefaultCaveat: string;
+  chatNoDataReply: string;
+}
+
 export type CyberAvatarRuntimeRules = {
   enabled: boolean;
   captureEnabled: boolean;
@@ -225,6 +250,8 @@ export type CyberAvatarRuntimeRules = {
   signalWeights: Record<string, number>;
   promptTemplates: CyberAvatarPromptTemplates;
   interaction: CyberAvatarInteractionRules;
+  contextHubTemplates: CyberAvatarContextHubTemplates;
+  selfFacing: CyberAvatarSelfFacingPromptConfig;
 };
 
 export type CyberAvatarAggregationPayload = {

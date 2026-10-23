@@ -397,6 +397,9 @@ export interface MomentGenerationContext {
   worldContext?: MomentGenerationWorldContext;
   relationshipContext?: MomentGenerationRelationshipContext;
   generationHints?: MomentGenerationHints;
+  // optional extension fields filled by newer call sites (P1: fold upstream intent)
+  ownerWorldFocus?: unknown;
+  ownerPortrait?: string;
 }
 
 // 全局共享池（广场）专用的高质量管线开关。仅当调用方（MomentsService 在全局帧）
@@ -422,5 +425,9 @@ export interface GenerateMomentOptions {
   extraSystemPromptSections?: string[];
   // 全局共享池高质量管线（best-of-N + 打分 + 评委 + 遥测）。
   qualityPipeline?: MomentQualityPipelineOptions;
+  // newer call-site extensions (P1: fold upstream intent)
+  isGlobalPool?: boolean;
+  ownerWorldFocus?: unknown;
+  ownerPortrait?: string;
 }
 // i18n-ignore-end

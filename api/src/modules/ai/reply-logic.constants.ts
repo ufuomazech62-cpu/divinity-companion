@@ -1,3 +1,13 @@
+import type { RawMomentValidationConfig } from './moment-output-validator';
+import {
+  DEFAULT_MOMENT_SCORER_WEIGHTS,
+  DEFAULT_MOMENT_NEAR_DUP_SIMILARITY,
+  DEFAULT_MOMENT_CANDIDATE_COUNT,
+  DEFAULT_MOMENT_MIN_ACCEPT_SCORE,
+  DEFAULT_MOMENT_JUDGE_SYSTEM_PROMPT,
+  type MomentScorerWeights,
+} from './moment-quality-defaults';
+
 // i18n-ignore-start: data / seed / preset content — not user-facing UI.
 export type ReplyLogicPromptTemplates = {
   identityFallback: string;
@@ -237,6 +247,18 @@ export type ReplyLogicSchedulerNextRunHints = {
   update_core_memory_weekly: string;
 };
 
+// Moment quality-pipeline config stored under reply_logic_runtime_rules.momentQuality
+// (defaults = historical hardcoded values; behavior unchanged until ops edits rules).
+export interface ReplyLogicMomentQuality {
+  candidateCount: number;
+  minAcceptScore: number;
+  nearDupSimilarity: number;
+  judge: boolean;
+  judgeSystemPrompt: string;
+  scorerWeights: MomentScorerWeights;
+  validation: RawMomentValidationConfig;
+}
+
 export type ReplyLogicRuntimeRules = {
   sleepHintMessages: string[];
   busyHintMessages: {
@@ -255,6 +277,7 @@ export type ReplyLogicRuntimeRules = {
   memoryCompressionEveryMessages: number;
   momentGenerateChance: number;
   channelGenerateChance: number;
+  momentQuality: ReplyLogicMomentQuality;
   sceneFriendRequestChance: number;
   sceneFriendRequestScenes: string[];
   relationshipInitialType: string;
@@ -761,6 +784,15 @@ export const DEFAULT_REPLY_LOGIC_RUNTIME_RULES: ReplyLogicRuntimeRules =
     memoryCompressionEveryMessages: MEMORY_COMPRESSION_INTERVAL,
     momentGenerateChance: MOMENT_GENERATE_CHANCE,
     channelGenerateChance: CHANNEL_GENERATE_CHANCE,
+    momentQuality: {
+      candidateCount: DEFAULT_MOMENT_CANDIDATE_COUNT,
+      minAcceptScore: DEFAULT_MOMENT_MIN_ACCEPT_SCORE,
+      nearDupSimilarity: DEFAULT_MOMENT_NEAR_DUP_SIMILARITY,
+      judge: false,
+      judgeSystemPrompt: DEFAULT_MOMENT_JUDGE_SYSTEM_PROMPT,
+      scorerWeights: DEFAULT_MOMENT_SCORER_WEIGHTS,
+      validation: {},
+    },
     sceneFriendRequestChance: SCENE_FRIEND_REQUEST_CHANCE,
     sceneFriendRequestScenes: [...SCENE_FRIEND_REQUEST_SCENES],
     relationshipInitialType: RELATIONSHIP_INITIAL_TYPE,
@@ -1780,6 +1812,7 @@ export function normalizeReplyLogicRuntimeRules(
   );
 
   return {
+    momentQuality: input?.momentQuality ?? defaults.momentQuality,
     sleepHintMessages: sanitizeMessages(
       input?.sleepHintMessages,
       defaults.sleepHintMessages,

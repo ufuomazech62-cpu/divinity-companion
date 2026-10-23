@@ -415,6 +415,8 @@ export function normalizeCyberAvatarRuntimeRules(
     signalWeights,
     promptTemplates: normalizePromptTemplates(input?.promptTemplates),
     interaction: normalizeInteractionRules(input?.interaction),
+    contextHubTemplates: fallback.contextHubTemplates,
+    selfFacing: fallback.selfFacing,
   };
 }
 

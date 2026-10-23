@@ -355,6 +355,8 @@ export class PromptBuilderService {
     currentTime: Date,
     generationContext?: MomentGenerationContext,
     sceneKey: SceneKey = 'moments_post',
+    // trailing options bag accepted for newer call sites (P1: fold upstream intent)
+    _options?: { isGlobalPool?: boolean },
   ): Promise<BuiltMomentRequest> {
     const systemPrompt = await this.buildMomentSystemPrompt(
       profile,

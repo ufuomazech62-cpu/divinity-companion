@@ -45,6 +45,8 @@ type SelfAgentHandlingResult = {
   handled: boolean;
   responseText?: string;
   handledBy?: 'action_runtime';
+  // set when a delegation batch was spawned by triage (upstream contract)
+  delegationBatchId?: string;
 };
 
 type SelfAgentWorkspaceDocumentName =

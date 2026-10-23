@@ -196,6 +196,19 @@ export class WorldContextHubService {
    * 「相关(relevance)」两块，避免聊天主路径重复查询。
    * @param opts.relevanceQuery 当前用户消息——传入则额外产出语义相关召回块（Stratum B·Phase 5）。
    */
+  // Per-owner moment assembly helper for the scheduler: returns the owner's
+  // portrait block and current world-focus line (scheduler's fallback literal
+  // mirrors this shape with empty strings).
+  async buildOwnerMomentContext(): Promise<{
+    portrait: string;
+    worldFocus: string;
+  }> {
+    const profile = await this.getProfileSafe().catch(() => null);
+    const portrait = this.renderPortrait(profile);
+    const worldFocus = this.renderWorldFocus(profile);
+    return { portrait, worldFocus };
+  }
+
   async buildOwnerContextBlocks(opts?: { relevanceQuery?: string }): Promise<{
     portrait: string;
     sharedMemory: string;

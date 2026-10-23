@@ -1,7 +1,10 @@
 import { readFileSync } from "node:fs";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 
-const ROOT = decodeURIComponent(new URL("../../../../", import.meta.url).pathname);
+// vitest rewrites import.meta.url to a virtual module id; resolve the repo
+// root from the working directory instead (script runs with cwd = apps/app).
+const ROOT = `${path.resolve(process.cwd(), "..", "..")}/`;
 
 const BRAND = "Divinity Companion";
 
